@@ -5,10 +5,22 @@ section.new-tweet{
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-basis: 75%;
 
 
 }
+
+.tweet-input{
+  border-bottom: 3px solid black;
+}
+.tweetbutton{
+  display: flex;
+  justify-content: space-between;
+  font-family: "Bungee";
+}
+
 .button{
-  align-items: flex-end;
+  display: flex;
+  background-color: #4056A1;
 }
 

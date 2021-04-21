@@ -1,4 +1,6 @@
 nav {
+  position: fixed;
+  top: 0;
   height: 120px;
   background-color: #4056A1;
   font-size: 24px;

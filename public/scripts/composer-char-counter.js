@@ -1,7 +1,7 @@
 $(document).ready(function() {
   // --- our code goes here ---
 
-// listen and count ketsrokes of tweets
+// listen and count ketstrokes of tweets
 
 $("#tweet-text").on("input", function() {
   // To move up the parent and children elements with JQuery

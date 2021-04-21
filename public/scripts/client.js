@@ -76,6 +76,40 @@ const createTweetElement = function(tweet) {
   return markup
 }
 
+//button and serialize dat for server!!
+$("#submit").submit((evt) => {
+  evt.preventDefault();
+
+console.log($(evt.target).serialize())
+ $.ajax({
+     url: `/tweets`,
+//     url: `http://localhost:8080/tweets   q=${evt.target.search.value}`,
+     method: 'POST',
+     data: $(evt.target).serialize(),
+     dataType: 'text',
+   })
+   .then(() => console.log('successfully posted'));
+});
+
+//     dataType: 'JSON'
+//    }).then(function(response) {
+//     console.log(response);
+//     // const item = createItem(response[0])
+//     $('#results').empty();
+//     createItems(response);
+// })
+
+
+
+
+//  $( "form" ).on( "submit", function( event ) {
+//    //event.preventDefault();
+//    console.log( $( this ).serialize() );
+//    debugger
+//  });
+
+
+
 //Renders  the tweet elements
 const renderTweets = function(tweets) {
   for (let tweet of tweets) {
@@ -83,7 +117,9 @@ const renderTweets = function(tweets) {
   }
 }
 
-
 renderTweets(data);
+
+
+
 
 });

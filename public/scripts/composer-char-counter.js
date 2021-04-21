@@ -4,6 +4,7 @@ $(document).ready(function() {
 // listen and count ketstrokes of tweets
 
 $("#tweet-text").on("input", function() {
+  //evt.preventDefault();
   // To move up the parent and children elements with JQuery
   let counter = $(this).parent().parent().children().children("output");
   // Keystroke Count

@@ -89,6 +89,9 @@ button {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
+#tweet-text:focus, input:focus{
+  outline: none;
+}
 .error {
   
   display: flex;

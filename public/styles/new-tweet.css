@@ -89,8 +89,8 @@ button {
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-#errorempty {
-  border: 3px solid red;
+.error {
+  
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -99,15 +99,4 @@ button {
   width: 30em;
   padding: 1%;
   
-}
-#errorcharacter {
-
-  border: 3px solid red;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  color: red;
-  width: 30em;
-  padding: 1%;
 }

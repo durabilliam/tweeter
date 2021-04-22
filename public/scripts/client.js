@@ -9,7 +9,7 @@ $(document).ready(function() {
  console.log('client');
  
 
-
+//timeago.render(document.querySelectorAll('.datetime'));
 
 //Create Tweet Element from pseudo object database
 const createTweetElement = function(tweet) {  
@@ -31,11 +31,9 @@ const createTweetElement = function(tweet) {
       <span>${tweet.user.handle}</span>
     </div>
   </header>
+  
   <footer class=tweet-footer>
-    <div>
-      <span class="datetime" timeago.format(${tweet.created_at}); datetime=${tweet.created_at}>July 07, 2016</span>
-      <!--<time class="time"></time>-->
-    </div>
+  <span class="datetime" >${tweet.created_at}</span>
     <div class=corner>
       <span id=flag><i class="fas fa-flag"></i></span>
       <span id=retweet><i class="fas fa-retweet"></i></span>
@@ -43,7 +41,6 @@ const createTweetElement = function(tweet) {
   </div>
   </footer>
 </article>
-
   `
   return markup
 }
@@ -53,16 +50,12 @@ $("#submit").submit((evt) => {
   evt.preventDefault();
 const newtweet = $("#tweet-text").val();
 if (newtweet.length > 140){
-  $("#errorcharacter").show()
-  setTimeout(() => {
-    $("#errorcharacter").hide()
-  }, 2000);
+  $(".error").text("Please Stay Under the 140 Character Limit!");
+  $(".error").slideDown()
   //alert("sorry your Tweet is over 140 Characters");
 } else if (newtweet.length === 0){
-  $("#errorempty").show()
-  setTimeout(() => {
-    $("#errorempty").hide()
-  }, 2000);
+  $(".error").text("Cannot Post an Empty Tweet!");
+  $(".error").slideDown()
   //alert("sorry your Tweet is Empty");
 } else {
  $.ajax({
@@ -72,7 +65,8 @@ if (newtweet.length > 140){
      dataType: 'text',
    })
    .then(() => {console.log('successfully posted');
-       loadTweets()});
+       loadTweets();
+       $('#tweets-container').empty()});
   }
 });
 
@@ -100,8 +94,8 @@ loadTweets();
 
 //$("#errorcharacter").hide()
 // $("#errorempty").hide()
-$("#errorempty")
-$("#errorcharacter")
+// $("#errorempty").slideUp();
+// $("#errorcharacter").slideUp();
 
 //$(".error").hide()
 

@@ -4,6 +4,8 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+
+
 $(document).ready(function() {
   // --- our code goes here ---
  console.log('client');
@@ -13,6 +15,10 @@ $(document).ready(function() {
 
 //Create Tweet Element from pseudo object database
 const createTweetElement = function(tweet) {  
+  console.log("tweet.created_at:", tweet.created_at)
+  console.log("Check:", jQuery.timeago("2008-07-17"))
+  console.log("Check:", jQuery.timeago(tweet.created_at))
+
   let markup =`
   <article class="tweet-id">
   <header class="tweet-header">
@@ -33,7 +39,7 @@ const createTweetElement = function(tweet) {
   </header>
   
   <footer class=tweet-footer>
-  <span class="datetime" >${tweet.created_at}</span>
+  <span class="datetime" >${jQuery.timeago(tweet.created_at)}</span>
     <div class=corner>
       <span id=flag><i class="fas fa-flag"></i></span>
       <span id=retweet><i class="fas fa-retweet"></i></span>

@@ -53,9 +53,17 @@ $("#submit").submit((evt) => {
   evt.preventDefault();
 const newtweet = $("#tweet-text").val();
 if (newtweet.length > 140){
-  alert("sorry your Tweet is over 140 Characters");
+  $("#errorcharacter").show()
+  setTimeout(() => {
+    $("#errorcharacter").hide()
+  }, 2000);
+  //alert("sorry your Tweet is over 140 Characters");
 } else if (newtweet.length === 0){
-  alert("sorry your Tweet is Empty");
+  $("#errorempty").show()
+  setTimeout(() => {
+    $("#errorempty").hide()
+  }, 2000);
+  //alert("sorry your Tweet is Empty");
 } else {
  $.ajax({
      url: `/tweets`,
@@ -90,6 +98,13 @@ const loadTweets = function() {
 loadTweets();
 
 
+//$("#errorcharacter").hide()
+// $("#errorempty").hide()
+$("#errorempty")
+$("#errorcharacter")
+
+//$(".error").hide()
+
 
 const escape = function (str) {
   let div = document.createElement("div");
@@ -97,9 +112,5 @@ const escape = function (str) {
   return div.innerHTML;
 };
 
-const safeHTML = `<p>${escape(textFromUser)}</p>`; //String
-
-
-$("<div>").text(textFromUser);///jQuery
 
 });

@@ -52,10 +52,16 @@ const newtweet = $("#tweet-text").val();
 if (newtweet.length > 140){
   $(".error").text("Please Stay Under the 140 Character Limit!");
   $(".error").slideDown()
+  setTimeout(() => {
+    $(".error").hide()
+  }, 3000);
   //alert("sorry your Tweet is over 140 Characters");
 } else if (newtweet.length === 0){
   $(".error").text("Cannot Post an Empty Tweet!");
   $(".error").slideDown()
+  setTimeout(() => {
+    $(".error").hide()
+  }, 3000);
   //alert("sorry your Tweet is Empty");
 } else {
  $.ajax({

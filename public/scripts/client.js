@@ -18,22 +18,22 @@ const createTweetElement = function(tweet) {
   <header class="tweet-header">
     <div class="twopiece">
       <div class="user-image">
-      <img src="${tweet.user.avatars}">
+      <img src=${tweet.user.avatars}>
       </div>
       <div class="user-name">
-      <span>"${tweet.user.name}"</span>
+      <span>${tweet.user.name}</span>
       </div>
     </div>  
     <div class="user-tweet">
-      <span>"${tweet.content.text}"</span>
+      <span>${escape(tweet.content.text)}</span>
     </div>
     <div class="handle">
-      <span>"${tweet.user.handle}"</span>
+      <span>${tweet.user.handle}</span>
     </div>
   </header>
   <footer class=tweet-footer>
     <div>
-      <span class="datetime" timeago.format(${tweet.created_at}); datetime="${tweet.created_at}">July 07, 2016</span>
+      <span class="datetime" timeago.format(${tweet.created_at}); datetime=${tweet.created_at}>July 07, 2016</span>
       <!--<time class="time"></time>-->
     </div>
     <div class=corner>
@@ -51,10 +51,7 @@ const createTweetElement = function(tweet) {
 //button and serialize data to send to tweet database
 $("#submit").submit((evt) => {
   evt.preventDefault();
-
-console.log("HERERERER",$("#tweet-text").val().length)
 const newtweet = $("#tweet-text").val();
-console.log("heahduxge:", newtweet)
 if (newtweet.length > 140){
   alert("sorry your Tweet is over 140 Characters");
 } else if (newtweet.length === 0){
@@ -87,12 +84,22 @@ const loadTweets = function() {
       dataType: 'JSON'
   }).then(function(response) {
       $('#results').empty();
-      console.log("jkhg", response);
       renderTweets(response);
   })
 }
 loadTweets();
 
 
+
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
+const safeHTML = `<p>${escape(textFromUser)}</p>`; //String
+
+
+$("<div>").text(textFromUser);///jQuery
 
 });

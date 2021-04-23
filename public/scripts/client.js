@@ -71,6 +71,7 @@ $(document).ready(function() {
         .then(() => {
           console.log('successfully posted');
           $("#tweet-text").val("");
+          $(".counter").text(140);
           loadTweets();
         });
     }

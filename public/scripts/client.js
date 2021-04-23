@@ -8,18 +8,10 @@
 
 $(document).ready(function() {
   // --- our code goes here ---
- console.log('client');
- 
 
-//timeago.render(document.querySelectorAll('.datetime'));
-
-//Create Tweet Element from pseudo object database
-const createTweetElement = function(tweet) {  
-  console.log("tweet.created_at:", tweet.created_at)
-  console.log("Check:", jQuery.timeago("2008-07-17"))
-  console.log("Check:", jQuery.timeago(tweet.created_at))
-
-  let markup =`
+  //Create Tweet Element from pseudo object database
+  const createTweetElement = function(tweet) {
+    let markup = `
   <article class="tweet-id">
   <header class="tweet-header">
     <div class="twopiece">
@@ -47,76 +39,68 @@ const createTweetElement = function(tweet) {
   </div>
   </footer>
 </article>
-  `
-  return markup
-}
+  `;
+    return markup;
+  };
 
-//button and serialize data to send to tweet database
-$("#submit").submit((evt) => {
-  evt.preventDefault();
-const newtweet = $("#tweet-text").val();
-if (newtweet.length > 140){
-  $(".error").text("Please Stay Under the 140 Character Limit!");
-  $(".error").slideDown()
-  setTimeout(() => {
-    $(".error").hide()
-  }, 3000);
-  //alert("sorry your Tweet is over 140 Characters");
-} else if (newtweet.length === 0){
-  $(".error").text("Cannot Post an Empty Tweet!");
-  $(".error").slideDown()
-  setTimeout(() => {
-    $(".error").hide()
-  }, 3000);
-  //alert("sorry your Tweet is Empty");
-} else {
- $.ajax({
-     url: `/tweets`,
-     method: 'POST',
-     data: $(evt.target).serialize(),
-     dataType: 'text',
-   })
-   .then(() => {console.log('successfully posted');
-       loadTweets()})
-  
-  }
-});
+  //button and serialize data to send to tweet database
+  $("#submit").submit((evt) => {
+    evt.preventDefault();
+    const newtweet = $("#tweet-text").val();
+    if (newtweet.length > 140) {
+      $(".error").text("Please Stay Under the 140 Character Limit!");
+      $(".error").slideDown();
+      setTimeout(() => {
+        $(".error").hide();
+      }, 3000);
+      //alert("sorry your Tweet is over 140 Characters");
+    } else if (newtweet.length === 0) {
+      $(".error").text("Cannot Post an Empty Tweet!");
+      $(".error").slideDown();
+      setTimeout(() => {
+        $(".error").hide();
+      }, 3000);
+      //alert("sorry your Tweet is Empty");
+    } else {
+      $.ajax({
+        url: `/tweets`,
+        method: 'POST',
+        data: $(evt.target).serialize(),
+        dataType: 'text',
+      })
+        .then(() => {
+          console.log('successfully posted');
+          $("#tweet-text").val("");
+          loadTweets();
+        });
+    }
+  });
 
 
-//Renders  the tweet elements
-const renderTweets = function(tweets) {
-  for (let tweet of tweets) {
-    $('#tweets-container').prepend(createTweetElement(tweet));
-  }
-}
+  //Renders  the tweet elements
+  const renderTweets = function(tweets) {
+    for (let tweet of tweets) {
+      $('#tweets-container').prepend(createTweetElement(tweet));
+    }
+  };
 
-//Fetches Tweets from DataBase With Ajax
-const loadTweets = function() {
-  $.ajax({
+  //Fetches Tweets from DataBase With Ajax
+  const loadTweets = function() {
+    $.ajax({
       url: `/tweets`,
       method: 'GET',
       dataType: 'JSON'
-  }).then(function(response) {
+    }).then(function(response) {
       $('#results').empty();
       renderTweets(response);
-  })
-}
-loadTweets();
+    });
+  };
+  loadTweets();
 
-
-//$("#errorcharacter").hide()
-// $("#errorempty").hide()
-// $("#errorempty").slideUp();
-// $("#errorcharacter").slideUp();
-
-//$(".error").hide()
-
-
-const escape = function (str) {
-  let div = document.createElement("div");
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
-};
-
+  const escape = function(str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
 
 });

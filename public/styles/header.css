@@ -1,6 +1,6 @@
 .user-header {
-  margin-top: 120px;
-  height: 400px;
+  margin-top: 5em;
+  height: 16.67em;
   width: 100%;
   display: flex;
   color: #FFFFFF;
@@ -10,5 +10,31 @@
   background-color: #1c575f;
   background-color: #001f7d;
   background-image: url("https://www.transparenttextures.com/patterns/brushed-alum-dark.png");
-  padding-bottom: 9px;
+  padding-bottom: 0.4em;
 }
+/* 
+@media only screen and (min-width: 1024px) {
+  .user-header {
+    display: flex;
+    margin-top: 10em;
+    margin-left: 2em;
+    height: 50vmin;
+    width: 60vmin;
+    
+  
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  /* Write Tablet only CSS here */
+  .user-header {
+    display: flex;
+    height: 50vmin;
+    width: 100%;
+    height: auto;
+    top: 0;
+    margin-left: 0;
+    margin-top: 0;
+  
+  }
+} */

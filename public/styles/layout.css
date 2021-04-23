@@ -37,3 +37,32 @@ body {
   width: 90%;
  
  }
+
+
+@media only screen and (min-width: 1024px) {
+
+ .wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-top: 10em;
+  height: 100%;
+ }
+ /* .kent{
+   color: tomato;
+ } */
+
+}
+
+@media only screen and (max-width: 1024px){
+  .wrapper {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   height: 100%;
+ 
+  } */
+  /* .kent{
+    color: teal;
+  }
+}  

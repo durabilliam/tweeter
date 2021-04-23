@@ -1,6 +1,6 @@
 
 .new-tweet {
-  margin-top: 50px;
+  margin-top: 2em;
   background-color: #f4f1ec;
   display: flex;
   justify-content: center;
@@ -36,8 +36,8 @@ button {
 }
 
 .tweet-id {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
   border: 3px solid black;
   padding: 3%;
   display: flex;
@@ -86,7 +86,7 @@ button {
 }
 
 .tweet-id:hover{
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 0.5em 0.625em rgba(0,0,0,0.3);
 }
 
 #tweet-text:focus, input:focus{
@@ -103,3 +103,36 @@ button {
   padding: 1%;
   
 }
+
+@media only screen and (min-width: 1024px) {
+  .user-header {
+    display: flex;
+    /* margin-top: 10em;
+    margin-left: 2em;*
+    position: fixed;*/
+    height: 50vmin;
+    width: 40%;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+ .container{
+   display: flex;
+   width: 60%;
+   flex-direction: column;
+   align-items: flex-end;
+   margin-right: 10px;
+   margin-left: 10px;
+   /*margin-top: 10em; */
+
+ }
+}
+
+@media only screen and (max-width: 1024px){
+  .user-header {
+   display: flex;
+   height: 100%;
+   width:100%;
+   z-index: 1;
+ 
+  }
+}  

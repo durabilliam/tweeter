@@ -77,8 +77,8 @@ if (newtweet.length > 140){
      dataType: 'text',
    })
    .then(() => {console.log('successfully posted');
-       loadTweets();
-       $('#tweets-container').empty()});
+       loadTweets()})
+  
   }
 });
 

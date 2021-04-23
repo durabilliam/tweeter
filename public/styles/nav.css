@@ -26,6 +26,8 @@ align-items: center;
 
 @media only screen and (max-width: 1024px){
   nav {
-    background-color: transparent;
+    background-color: #1c575f;
+    background-color: #001f7d;
+    background-image: url("https://www.transparenttextures.com/patterns/brushed-alum-dark.png");
   }
 }

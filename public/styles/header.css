@@ -15,21 +15,16 @@
 
 @media only screen and (min-width: 1024px) {
   .user-header {
-    display: flex;
     height: 50vmin;
     width: 40%;
     margin-right: 10px;
     margin-left: 10px;
+    padding-top: 5%;
   }
 }
 
 @media only screen and (max-width: 1024px){
   .user-header {
-    display: flex;
-    height: 100%;
-    width:100%;
-    
-    margin: 0;
-    padding: 0;
+    margin: 120px;
   }
-} 
+}
